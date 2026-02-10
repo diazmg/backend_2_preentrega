@@ -21,6 +21,14 @@ router.get('/register', (req, res) => {
     });
 });
 
+router.get("/current", (req, res) => {
+    res.render("current", {
+        title: "Perfil",
+        style: "index.css"
+    });
+});
+
+
 router.get('/products', async (req, res) => {
     const products = await ProductService.getAllProducts(req.query);
 

@@ -1,0 +1,21 @@
+<h1>Perfil del usuario</h1>
+
+<button id="loadUser">Cargar datos</button>
+
+<pre id="result"></pre>
+
+<script>
+  document.getElementById("loadUser").addEventListener("click", async () => {
+    const token = localStorage.getItem("token");
+
+    const response = await fetch("/api/sessions/current", {
+      headers: {
+        Authorization: "Bearer " + token
+      }
+    });
+
+    const data = await response.json();
+    document.getElementById("result").innerText =
+      JSON.stringify(data, null, 2);
+  });
+</script>
